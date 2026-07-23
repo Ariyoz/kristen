@@ -265,6 +265,12 @@ footer h6 { color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
 .section-subheading { font-size: 1.125rem; color: var(--on-surface-variant); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 .hero-deco-blur { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; z-index: 1; pointer-events: none; }
 
+/* =============================================
+   GLOBAL OVERFLOW LOCK — must be first
+   ============================================= */
+html { overflow-x: hidden; }
+body { overflow-x: hidden; max-width: 100%; }
+
 @media (max-width: 768px) {
   .masonry { columns: 2; }
   .hero-title { font-size: 2.75rem; }
@@ -273,24 +279,24 @@ footer h6 { color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
   .btn-hero { padding: 0.85rem 1.75rem; font-size: 0.95rem; }
   .pricing-card { padding: 2rem 1.25rem; }
   .addon-pill { padding: 0.75rem 1.25rem; }
+  /* Reset the negative margin that causes bleed on tablets */
+  .page-hero .ph-right { margin-left: 0; }
+  /* Ghost letter smaller on tablet */
+  .page-hero .ph-ghost-letter { font-size: 8rem; }
 }
 
 @media (max-width: 480px) {
-  /* Core overflow fixes */
-  html, body { overflow-x: hidden; max-width: 100vw; }
-
-  /* Prevent page jump when mobile keyboard opens on forms */
+  /* Prevent page jump when mobile keyboard opens */
   #hero { height: 100svh; min-height: 500px; }
 
-  /* Input focus zoom prevention */
+  /* Input focus zoom prevention — iOS zooms if < 16px */
   input, select, textarea { font-size: 16px !important; }
 
-  /* Ghost letter — too large on mobile */
-  .page-hero .ph-ghost-letter { font-size: 6rem; }
+  /* Ghost letter */
+  .page-hero .ph-ghost-letter { font-size: 5rem; }
 
-  /* Decorative absolute boxes in about/story section — clip them */
-  .position-relative { overflow: visible; }
-  .col-lg-6 .position-absolute { display: none; }
+  /* Decorative absolute boxes — hidden on mobile */
+  .col-lg-6 .position-absolute { display: none !important; }
 
   /* Gallery */
   .masonry { columns: 1; }
@@ -298,62 +304,76 @@ footer h6 { color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
   /* Typography */
   .hero-title { font-size: 2rem; }
   .section-heading { font-size: 1.7rem; }
-  .ph-title { font-size: clamp(1.8rem, 7vw, 2.5rem) !important; }
+  .ph-title { font-size: clamp(1.6rem, 6.5vw, 2.2rem) !important; }
+  .ph-sub { max-width: 100% !important; }
 
-  /* Sections padding */
+  /* Sections */
   .py-section { padding: 2.5rem 0; }
 
-  /* Buttons — prevent overflow on small screens */
-  .btn-hero { padding: 0.75rem 1.25rem; font-size: 0.9rem; gap: 0.3rem; }
-  .btn-submit { padding: 0.85rem 1.5rem; font-size: 0.9rem; }
+  /* Buttons */
+  .btn-hero { padding: 0.75rem 1.1rem; font-size: 0.875rem; gap: 0.25rem; }
+  .btn-submit { padding: 0.85rem 1.25rem; font-size: 0.875rem; }
   .d-flex.flex-wrap.gap-3 { gap: 0.5rem !important; }
+  .d-flex.flex-wrap.gap-2 { gap: 0.4rem !important; }
 
-  /* Stats section — prevent negative margin overflow */
-  section[style*="margin-top:-5rem"] { margin-top: -2rem !important; }
+  /* Stats section negative margin */
+  section[style*="margin-top:-5rem"] { margin-top: -1.5rem !important; }
 
   /* Service selector cards */
-  .service-selector-card { padding: 1rem 0.75rem; }
+  .service-selector-card { padding: 0.85rem 0.5rem; }
+  .service-selector-card p { font-size: 0.8rem !important; }
 
-  /* Success message buttons */
-  .success-message .d-flex { flex-direction: column; align-items: stretch; }
+  /* Success / booking send buttons — stack vertically */
+  .success-message .d-flex.flex-wrap { flex-direction: column !important; }
+  .success-message .d-flex.flex-wrap button { width: 100%; }
 
-  /* Contact / booking form full width buttons */
+  /* Contact / booking form buttons */
   .btn-submit.flex-grow-1 { min-width: 0; width: 100%; }
 
-  /* Addon pills wrap properly */
-  .addon-pill { padding: 0.65rem 1rem; font-size: 0.85rem; }
+  /* Addon pills */
+  .addon-pill { padding: 0.65rem 0.9rem; font-size: 0.82rem; }
+  .addon-price { font-size: 0.78rem; padding: 0.25rem 0.6rem; }
 
-  /* Pricing cards */
+  /* Pricing */
   .pricing-card { padding: 1.5rem 1rem; }
   .price-amount { font-size: 2.25rem; }
 
-  /* Footer newsletter form stacks */
+  /* Footer */
   footer .d-flex.gap-2 { flex-direction: column; }
   footer .d-flex.gap-2 input { width: 100%; }
+  footer .col-6 { flex: 0 0 100%; max-width: 100%; }
 
-  /* Testimonial cards */
+  /* Testimonials */
   .testimonial-card { padding: 1.25rem; }
 
   /* BA slider */
   .ba-wrap { border-width: 2px; }
 
   /* Stat cards */
-  .stat-card { padding: 1.25rem 0.75rem; }
-  .stat-num { font-size: 1.75rem; }
+  .stat-card { padding: 1.25rem 0.5rem; }
+  .stat-num { font-size: 1.6rem; }
+  .stat-label { font-size: 0.68rem; }
 
-  /* CTA band — large decorative circle */
-  .cta-band::before { display: none; }
+  /* CTA decorative circle */
+  .cta-band::before, #cta::before { display: none !important; }
 
-  /* Navbar brand text */
-  .navbar-brand span { font-size: 1rem; }
-
-  /* Page hero left padding on tiny screens */
+  /* Page hero */
   .page-hero .ph-left { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+  .page-hero { overflow: hidden !important; }
 
-  /* ph-right margin that can bleed */
-  .page-hero .ph-right { margin-left: 0; }
-
-  /* Gallery video thumbs — fixed heights too tall on 1-col */
+  /* Gallery video thumbs */
   .masonry-item video.thumb,
-  .masonry-item .thumb { height: auto !important; min-height: 200px; max-height: 280px; }
+  .masonry-item .thumb { height: auto !important; min-height: 180px; max-height: 260px; }
+
+  /* Swiper — prevent horizontal bleed */
+  .swiper { overflow: hidden !important; }
+
+  /* Badge trust — long text wrap */
+  .badge-trust { font-size: 0.65rem; letter-spacing: 0.06em; padding: 0.35rem 0.75rem; white-space: normal; text-align: center; }
+
+  /* Comparison table — scroll instead of overflow */
+  .comparison-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Why icon alignment on small screens */
+  .d-flex.align-items-start.gap-3 { flex-wrap: nowrap; }
 }
