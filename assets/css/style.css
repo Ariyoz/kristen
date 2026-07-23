@@ -245,7 +245,7 @@ footer h6 { color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
 .success-icon { width: 4rem; height: 4rem; border-radius: 50%; background: #16a34a; color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
 
 /* Hero (home) */
-#hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+#hero { position: relative; height: 100vh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 #hero .hero-bg { position: absolute; inset: 0; overflow: hidden; }
 #hero .hero-bg video { width: 100%; height: 100%; object-fit: cover; display: block; }
 #hero .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4), var(--background)); z-index: 1; }
@@ -278,6 +278,12 @@ footer h6 { color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
 @media (max-width: 480px) {
   /* Core overflow fixes */
   html, body { overflow-x: hidden; max-width: 100vw; }
+
+  /* Prevent page jump when mobile keyboard opens on forms */
+  #hero { height: 100svh; min-height: 500px; }
+
+  /* Input focus zoom prevention */
+  input, select, textarea { font-size: 16px !important; }
 
   /* Ghost letter — too large on mobile */
   .page-hero .ph-ghost-letter { font-size: 6rem; }

@@ -127,7 +127,20 @@ if (steps.length) {
     const g = id => document.getElementById(id)?.value || '';
     const budget = document.getElementById('bBudgetVal')?.value || '—';
     const el = document.getElementById('bookingReview');
-    if (el) el.innerHTML = `<div class="row g-3"><div class="col-6"><strong>Service:</strong><br>${g('selectedService')}</div><div class="col-6"><strong>Name:</strong><br>${g('bName')}</div><div class="col-6"><strong>Email:</strong><br>${g('bEmail')}</div><div class="col-6"><strong>Phone:</strong><br>${g('bPhone')}</div><div class="col-6"><strong>Date:</strong><br>${g('bDate')}</div><div class="col-6"><strong>Time:</strong><br>${g('bTime')}</div><div class="col-6"><strong>Bedrooms:</strong><br>${g('bBedrooms')||'—'}</div><div class="col-6"><strong>Bathrooms:</strong><br>${g('bBathrooms')||'—'}</div><div class="col-6"><strong>Budget:</strong><br><span style="color:var(--primary);font-weight:700;font-size:1.1rem">$${budget}</span></div><div class="col-12"><strong>Address:</strong><br>${g('bAddress')}</div>${g('bNotes')?`<div class="col-12"><strong>Notes:</strong><br>${g('bNotes')}</div>`:''}</div>`;
+    if (el) el.innerHTML = `
+      <div class="row g-2" style="font-size:0.9rem;line-height:1.6">
+        <div class="col-12 col-sm-6"><strong>Service:</strong><br><span class="text-muted">${g('selectedService')}</span></div>
+        <div class="col-12 col-sm-6"><strong>Name:</strong><br><span class="text-muted">${g('bName')}</span></div>
+        <div class="col-12"><strong>Email:</strong><br><span class="text-muted" style="word-break:break-all">${g('bEmail')}</span></div>
+        <div class="col-12 col-sm-6"><strong>Phone:</strong><br><span class="text-muted">${g('bPhone')}</span></div>
+        <div class="col-12 col-sm-6"><strong>Budget:</strong><br><span style="color:var(--primary);font-weight:700">$${budget}</span></div>
+        <div class="col-12 col-sm-6"><strong>Date:</strong><br><span class="text-muted">${g('bDate')}</span></div>
+        <div class="col-12 col-sm-6"><strong>Time:</strong><br><span class="text-muted">${g('bTime')}</span></div>
+        <div class="col-6"><strong>Bedrooms:</strong><br><span class="text-muted">${g('bBedrooms')||'—'}</span></div>
+        <div class="col-6"><strong>Bathrooms:</strong><br><span class="text-muted">${g('bBathrooms')||'—'}</span></div>
+        <div class="col-12"><strong>Address:</strong><br><span class="text-muted">${g('bAddress')}</span></div>
+        ${g('bNotes') ? `<div class="col-12"><strong>Notes:</strong><br><span class="text-muted">${g('bNotes')}</span></div>` : ''}
+      </div>`;
   }
   function submitBooking() {
     document.getElementById('bookingFormWrapper').style.display = 'none';
