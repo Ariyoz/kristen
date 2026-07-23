@@ -25,6 +25,15 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
 .navbar-toggler-icon { filter: invert(1); }
 #navbar.scrolled .navbar-toggler { border-color: var(--outline-variant); }
 #navbar.scrolled .navbar-toggler-icon { filter: none; }
+/* Mobile nav — solid panel so it doesn't bleed over hero content */
+@media (max-width: 991px) {
+  #navbar .navbar-collapse { background: rgba(5,20,60,0.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 0 0 1rem 1rem; padding: 0.75rem 1.25rem 1.25rem; margin-top: 0.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  #navbar.scrolled .navbar-collapse { background: rgba(255,255,255,0.98); box-shadow: 0 8px 24px rgba(0,74,198,0.1); }
+  #navbar.scrolled .navbar-collapse .nav-link { color: var(--on-surface) !important; }
+  #navbar.scrolled .navbar-collapse .nav-link:hover { color: var(--primary) !important; }
+  .navbar-collapse .nav-link { color: rgba(255,255,255,0.92) !important; padding: 0.6rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .navbar-collapse .btn-book { margin-top: 0.75rem; width: 100%; text-align: center; display: block; }
+}
 
 /* Page Hero — Premium Split Design */
 .page-hero { position: relative; min-height: 480px; height: 58vh; display: flex; align-items: stretch; overflow: hidden; }
