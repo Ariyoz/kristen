@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kirste Cleaning | Premium Professional Cleaning Across the USA</title>
+  <meta name="description" content="Kirste Cleaning — premium, eco-friendly cleaning services across 150+ US cities. Book online today." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+  :root { --primary:#004ac6; --primary-container:#2563eb; --secondary:#00668a; --background:#f7f9fb; --surface-low:#f2f4f6; --on-surface:#191c1e; --on-surface-variant:#434655; --outline-variant:#c3c6d7; }
+  *,*::before,*::after{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--background);color:var(--on-surface);overflow-x:hidden}
+  h1,h2,h3,h4,h5,h6{font-family:'Plus Jakarta Sans',sans-serif}
+  /* Navbar */
+  #navbar{position:fixed;top:0;width:100%;z-index:1050;transition:all .4s;padding:1rem 0}
+  #navbar.scrolled{background:rgba(255,255,255,.96)!important;box-shadow:0 2px 24px rgba(0,74,198,.08);padding:.5rem 0}
+  #navbar.scrolled .nav-link,#navbar.scrolled .navbar-brand span{color:var(--on-surface)!important}
+  .nav-link{color:rgba(255,255,255,.9)!important;font-size:14px;font-weight:600;letter-spacing:.04em;transition:color .2s}
+  .nav-link:hover{color:#fff!important}
+  #navbar.scrolled .nav-link:hover,#navbar.scrolled .nav-link.active{color:var(--primary)!important}
+  .navbar-brand span{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.2rem;color:#fff;transition:color .3s}
+  .btn-book{background:var(--primary);color:#fff;border-radius:9999px;font-size:14px;font-weight:600;padding:.6rem 1.5rem;border:none;transition:all .25s;box-shadow:0 4px 16px rgba(0,74,198,.25)}
+  .btn-book:hover{background:var(--primary-container);color:#fff;transform:scale(1.04)}
+  .navbar-toggler{border-color:rgba(255,255,255,.4)} .navbar-toggler-icon{filter:invert(1)}
+  #navbar.scrolled .navbar-toggler{border-color:var(--outline-variant)} #navbar.scrolled .navbar-toggler-icon{filter:none}
+  /* Hero */
+  #hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;overflow:hidden}
+  .hero-bg video{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.62),rgba(0,0,0,.4),var(--background));z-index:1}
+  .hero-content{position:relative;z-index:2;text-align:center;color:#fff;max-width:900px;padding:0 1rem}
+  .badge-trust{display:inline-block;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);border-radius:9999px;padding:.4rem 1rem;font-size:.75rem;font-weight:600;letter-spacing:.1em;margin-bottom:1.5rem}
+  .hero-title{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem;text-shadow:0 8px 40px rgba(0,0,0,.5)}
+  .hero-sub{font-size:1.2rem;color:rgba(255,255,255,.82);margin-bottom:2.5rem}
+  .btn-hero{border-radius:9999px;padding:1rem 2.5rem;font-weight:600;font-size:1rem;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+  .btn-hero-primary{background:var(--primary);color:#fff;border:none;box-shadow:0 8px 24px rgba(0,74,198,.35)}
+  .btn-hero-primary:hover{background:var(--primary-container);color:#fff;transform:translateY(-3px);box-shadow:0 0 30px rgba(37,99,235,.5)}
+  .btn-hero-outline{background:rgba(0,0,0,.28);color:#fff;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px)}
+  .btn-hero-outline:hover{background:rgba(255,255,255,.18);color:#fff}
+  .scroll-down{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;z-index:2}
+  @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+  /* Sections */
+  .py-section{padding:5rem 0}
+  .section-heading{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--on-surface);margin-bottom:.75rem}
+  .section-sub{font-size:1.1rem;color:var(--on-surface-variant);max-width:680px;margin:0 auto 2rem}
+  .divider{height:4px;width:3.5rem;background:var(--primary);border-radius:9999px;margin:0 auto 1.5rem}
+  /* Stats */
+  .stat-card{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.7);border-radius:1rem;padding:1.75rem 1rem;text-align:center;box-shadow:0 8px 40px rgba(0,74,198,.1)}
+  .stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.2rem;font-weight:700;color:var(--primary);line-height:1.2}
+  .stat-label{font-size:.75rem;font-weight:600;color:var(--on-surface-variant);letter-spacing:.06em;margin-top:.25rem;text-transform:uppercase}
+  /* Service cards */
+  .service-card{border-radius:1rem;overflow:hidden;background:#fff;border:1px solid var(--outline-variant);transition:all .4s cubic-bezier(.22,1,.36,1);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+  .service-card:hover{box-shadow:0 20px 60px rgba(0,74,198,.13);transform:translateY(-6px)}
+  .card-img-wrap{height:200px;overflow:hidden;position:relative}
+  .card-bg{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+  .service-card:hover .card-bg{transform:scale(1.08)}
+  .card-img-wrap video::-webkit-media-controls{display:none!important}
+  .card-img-wrap video::-webkit-media-controls-enclosure{display:none!important}
+  .card-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.56),transparent)}
+  .card-lbl{position:absolute;bottom:1rem;left:1rem;color:#fff;display:flex;align-items:center;gap:.5rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.05rem}
+  .card-body-pad{padding:1.25rem 1.5rem 1.5rem}
+  .learn-link{color:var(--primary);font-size:.875rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s}
+  .service-card:hover .learn-link{gap:.75rem}
+  /* BA Slider */
+  .ba-wrap{position:relative;overflow:hidden;border-radius:1rem;box-shadow:0 8px 48px rgba(0,0,0,.15);border:4px solid #fff;aspect-ratio:16/9}
+  .ba-after,.ba-before{position:absolute;inset:0;background-size:cover;background-position:center}
+  .ba-before{z-index:2;width:50%}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:4px;background:#fff;z-index:3;cursor:ew-resize;box-shadow:0 0 10px rgba(0,0,0,.3)}
+  .ba-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3rem;height:3rem;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 16px rgba(0,74,198,.45)}
+  .ba-tag{position:absolute;top:1rem;z-index:4;background:rgba(0,0,0,.5);color:#fff;font-size:.72rem;font-weight:700;padding:.3rem .8rem;border-radius:9999px}
+  /* Gallery */
+  .masonry{columns:3;column-gap:1rem}
+  .masonry-item{break-inside:avoid;margin-bottom:1rem;border-radius:.75rem;overflow:hidden;cursor:pointer;position:relative}
+  .masonry-item .thumb{width:100%;display:block;background-size:cover;background-position:center;transition:transform .5s}
+  .masonry-item:hover .thumb{transform:scale(1.05)}
+  .masonry-item .overlay-text{position:absolute;inset:0;background:rgba(0,74,198,.0);transition:background .3s;display:flex;align-items:center;justify-content:center}
+  .masonry-item:hover .overlay-text{background:rgba(0,74,198,.18)}
+  @media(max-width:768px){.masonry{columns:2}}
+  @media(max-width:480px){.masonry{columns:1}}
+  /* Testimonials */
+  .testimonial-card{background:#fff;border-radius:1rem;padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,.07);border:1px solid var(--outline-variant)}
+  .stars{color:#f59e0b;font-size:1.1rem}
+  .avatar{width:48px;height:48px;border-radius:50%;object-fit:cover}
+  .swiper-pagination-bullet-active{background:var(--primary)!important}
+  /* CTA */
+  .cta-band{background:linear-gradient(135deg,var(--primary) 0%,#1d4ed8 55%,var(--secondary) 100%);position:relative;overflow:hidden}
+  .cta-band::before{content:'';position:absolute;top:-40%;right:-15%;width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
+  /* Steps */
+  .step-circle{width:3rem;height:3rem;border-radius:50%;background:var(--primary);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+  /* Why icons */
+  .why-icon{width:3.5rem;height:3.5rem;border-radius:.75rem;background:rgba(0,74,198,.08);display:flex;align-items:center;justify-content:center;color:var(--primary)}
+  /* Lightbox */
+  #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:9999;align-items:center;justify-content:center}
+  #lightbox.active{display:flex}
+  #lightbox img,#lightbox video{max-width:90vw;max-height:90vh;border-radius:.5rem}
+  #lb-close{position:absolute;top:1.5rem;right:2rem;color:#fff;background:none;border:none;cursor:pointer;line-height:1}
+  /* Video gallery items */
+  .video-play-overlay{display:none}
+  .masonry-item.video-item video::-webkit-media-controls{display:none!important}
+  .masonry-item.video-item video::-webkit-media-controls-enclosure{display:none!important}
+  /* Scroll top */
+  #scrollTop{position:fixed;bottom:2rem;right:2rem;width:3rem;height:3rem;border-radius:50%;background:var(--primary);color:#fff;border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,74,198,.3);cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;z-index:1000}
+  #scrollTop.visible{opacity:1;transform:translateY(0)}
+  .toast-wrap{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);z-index:9999}
+  /* Footer */
+  footer{background:#111827;color:rgba(255,255,255,.78)}
+  footer .brand{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.2rem;color:#fff}
+  footer a{color:rgba(255,255,255,.62);text-decoration:none;transition:color .2s}
+  footer a:hover{color:#fff}
+  footer h6{color:#fff;font-family:'Plus Jakarta Sans',sans-serif}
+  .foot-divider{border-color:rgba(255,255,255,.1)}
+  .soc-icon{width:2.25rem;height:2.25rem;border-radius:50%;background:rgba(255,255,255,.1);display:inline-flex;align-items:center;justify-content:center;transition:background .2s}
+  .soc-icon:hover{background:var(--primary)}
+  /* Preview section link cards */
+  .preview-link{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.875rem;color:var(--primary);text-decoration:none;border:2px solid var(--primary);border-radius:9999px;padding:.5rem 1.25rem;transition:all .25s}
+  .preview-link:hover{background:var(--primary);color:#fff}
+</style>
+</head>
+<body>
+<!-- NAVBAR -->
+<nav id="navbar" class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#004ac6"/><path d="M8 20c2-4 4-7 8-8 4-1 7 1 8 4" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="12" r="3" fill="#7bd0ff"/></svg>
+      <span>Kirste Cleaning</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <a class="btn btn-book ms-lg-3 mt-2 mt-lg-0" href="booking.html">Book Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline poster="">
+      <source src="src/assets/vidoes/Herobgvideo.MOV" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="badge-trust" data-aos="fade-down">✦ TRUSTED BY 500+ HOMEOWNERS ACROSS THE USA</div>
+    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">Premium Cleaning,<br/>Spotless Results</h1>
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">Reliable, eco-friendly cleaning delivered by vetted professionals.<br/>Your home deserves the best.</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center" data-aos="fade-up" data-aos-delay="300">
+      <a href="booking.html" class="btn btn-hero btn-hero-primary">Schedule Your Clean <span class="material-symbols-outlined" style="font-size:1.2rem">arrow_forward</span></a>
+      <a href="services.html" class="btn btn-hero btn-hero-outline">View Services</a>
+    </div>
+  </div>
+  <div class="scroll-down"><span class="material-symbols-outlined" style="font-size:2rem;color:rgba(255,255,255,.75)">expand_more</span></div>
+</section>
+
+<!-- STATS -->
+<section style="position:relative;z-index:10;margin-top:-5rem;padding-bottom:3rem">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="0"><div class="stat-card"><div class="stat-num counter" data-target="500">0</div><div class="stat-label">Homes Cleaned</div></div></div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100"><div class="stat-card"><div class="stat-num counter" data-target="150">0</div><div class="stat-label">Active Cities</div></div></div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200"><div class="stat-card"><div class="stat-num counter" data-target="98">0</div><div class="stat-label">% Happy Clients</div></div></div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300"><div class="stat-card"><div class="stat-num counter" data-target="500">0</div><div class="stat-label">Cleaning Pros</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW → services.html -->
+<section class="py-section bg-white">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-heading">Elite Cleaning Solutions</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Six specialized services, one uncompromising standard. Tap any card to learn more.</p>
+    </div>
+    <div class="row g-4 mb-5">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <a href="services.html" style="text-decoration:none">
+          <div class="service-card h-100">
+            <div class="card-img-wrap">
+              <video class="card-bg" style="width:100%;height:100%;object-fit:cover;display:block" src="src/assets/vidoes/IMG_1624.MP4" autoplay muted loop playsinline></video>
+              <div class="card-grad"></div><div class="card-lbl"><span class="material-symbols-outlined">home</span> Residential</div>
+            </div>
+            <div class="card-body-pad"><p class="text-muted mb-0">Complete top-to-bottom dusting, vacuuming, and sanitization.</p></div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="services.html" style="text-decoration:none">
+          <div class="service-card h-100">
+            <div class="card-img-wrap">
+              <video class="card-bg" style="width:100%;height:100%;object-fit:cover;display:block" src="src/assets/vidoes/IMG_1625.MOV" autoplay muted loop playsinline></video>
+              <div class="card-grad"></div><div class="card-lbl"><span class="material-symbols-outlined">clean_hands</span> Deep Cleaning</div>
+            </div>
+            <div class="card-body-pad"><p class="text-muted mb-0">Restorative refresh targeting hard-to-reach areas and stubborn stains.</p></div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="services.html" style="text-decoration:none">
+          <div class="service-card h-100">
+            <div class="card-img-wrap">
+              <video class="card-bg" style="width:100%;height:100%;object-fit:cover;display:block" src="src/assets/vidoes/IMG_1626.MOV" autoplay muted loop playsinline></video>
+              <div class="card-grad"></div><div class="card-lbl"><span class="material-symbols-outlined">corporate_fare</span> Office Cleaning</div>
+            </div>
+            <div class="card-body-pad"><p class="text-muted mb-0">Professional maintenance for commercial spaces and workplaces.</p></div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="text-center" data-aos="fade-up">
+      <a href="services.html" class="btn btn-hero btn-hero-primary">See All 6 Services <span class="material-symbols-outlined" style="font-size:1.2rem">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="py-section" style="background:var(--surface-low)">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-heading">How It Works</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Three easy steps to a spotless home.</p>
+    </div>
+    <div class="row g-4 mb-5">
+      <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="0"><div class="step-circle">1</div><h5 class="fw-bold">Book Online</h5><p class="text-muted">Choose your service and a date that fits your schedule.</p></div>
+      <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="150"><div class="step-circle">2</div><h5 class="fw-bold">We Show Up</h5><p class="text-muted">A vetted professional arrives on time with all supplies.</p></div>
+      <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="300"><div class="step-circle">3</div><h5 class="fw-bold">Enjoy Your Space</h5><p class="text-muted">Relax in a spotless home. Satisfaction guaranteed.</p></div>
+    </div>
+    <div class="text-center" data-aos="fade-up">
+      <a href="booking.html" class="btn btn-hero btn-hero-primary">Book Now <span class="material-symbols-outlined" style="font-size:1.2rem">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT PREVIEW → about.html -->
+<section class="py-section bg-white">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="position-relative">
+          <video src="src/assets/vidoes/new.MOV" autoplay muted loop playsinline class="img-fluid rounded-3 shadow-lg position-relative" style="z-index:2;width:100%;object-fit:cover;max-height:420px"></video>
+          <div class="position-absolute" style="bottom:-1.5rem;right:-1.5rem;width:7rem;height:7rem;background:rgba(0,74,198,.08);border-radius:.75rem;z-index:1"></div>
+          <div class="position-absolute" style="top:-1.5rem;left:-1.5rem;width:5rem;height:5rem;border:2px solid rgba(0,74,198,.2);border-radius:.75rem;z-index:1"></div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+        <p class="text-uppercase fw-semibold mb-2" style="color:var(--primary);letter-spacing:.1em;font-size:.85rem">Our Story</p>
+        <h2 class="section-heading" style="text-align:left">Dedicated to Spotless Results</h2>
+        <div class="divider" style="margin:1rem 0 1.5rem"></div>
+        <p class="text-muted mb-4" style="font-size:1.05rem;line-height:1.75">Founded in 2024, Kirste Cleaning has grown from a two-person operation to 500+ vetted professionals serving 150+ cities. Every home deserves the attention of a professional.</p>
+        <div class="row g-3 mb-4">
+          <div class="col-sm-6"><div class="d-flex align-items-start gap-3"><div class="why-icon flex-shrink-0"><span class="material-symbols-outlined">verified</span></div><div><strong>50-Point Checklist</strong><p class="text-muted small mb-0">Uncompromising quality every job.</p></div></div></div>
+          <div class="col-sm-6"><div class="d-flex align-items-start gap-3"><div class="why-icon flex-shrink-0"><span class="material-symbols-outlined">eco</span></div><div><strong>Eco-Conscious</strong><p class="text-muted small mb-0">Safe for family, pets and planet.</p></div></div></div>
+          <div class="col-sm-6"><div class="d-flex align-items-start gap-3"><div class="why-icon flex-shrink-0"><span class="material-symbols-outlined">group</span></div><div><strong>Vetted Professionals</strong><p class="text-muted small mb-0">Background-checked and insured.</p></div></div></div>
+          <div class="col-sm-6"><div class="d-flex align-items-start gap-3"><div class="why-icon flex-shrink-0"><span class="material-symbols-outlined">shield</span></div><div><strong>Satisfaction Guarantee</strong><p class="text-muted small mb-0">We re-clean free if unhappy.</p></div></div></div>
+        </div>
+        <a href="about.html" class="btn btn-hero btn-hero-primary">Meet the Team <span class="material-symbols-outlined" style="font-size:1.2rem">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER (standalone — stays on home) -->
+<section class="py-section" style="background:var(--surface-low)">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="section-heading">The Magic Reveal</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Drag the slider to see the difference our professionals make.</p>
+    </div>
+    <div class="ba-wrap" id="baWrap" data-aos="zoom-in">
+      <div class="ba-after" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuAj7DzhKfIzjzrl6hPUxF0Cxw2kszsLCcTsTIXXw5p99OjuloZm_DBbwyID8WOgfjlPzBRNG813HVSzOhNdJ9ZdsFmFOAw5mvtBZGbbM43fLkwrhSLuImav_45L_Cu8VdGWX_XaN1gjvK47Ay_8QhJnEZkerex85KLDi_P9EGozUGJ2BFmTQwh8_6NYOKrOU3PZk0FtKqC3oqW11pFBqOPpjDTzaTphMZ-80YLesT1FBNOjzbcwi-h7')"></div>
+      <div class="ba-before" id="baBefore" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDlSQ5XLq5EKJ1KlJAmcfYfP2HV9OalpNYOfnogGTy8pINC0FhNoCvkpX-kqGbHmkYhoLOfOoGTp80CBSadtF4qmONob8Vm4EdaUq-Xba5SjQTldogxdKNWXmrudIg7om5GQCFKlJBaa_8u3ZsiPrrDHENwbmON1hwmKU27bokzp0jeE-T455b1cVGfdP1W1ShOJEEZwphv4KBJOOmlrxJwJBjfhd448QP298Abt7Y0-5HvyukSfumq')"></div>
+      <div class="ba-handle" id="baHandle"><div class="ba-btn"><span class="material-symbols-outlined" style="font-size:1.2rem">unfold_more_double</span></div></div>
+      <div class="ba-tag" style="left:1rem">BEFORE</div>
+      <div class="ba-tag" style="right:1rem;left:auto;background:rgba(0,74,198,.8)">AFTER</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY PREVIEW → gallery.html -->
+<section class="py-section bg-white">
+  <div class="container">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5" data-aos="fade-up">
+      <div>
+        <h2 class="section-heading mb-1">Our Work Gallery</h2>
+        <p class="text-muted mb-0">A visual testament to our commitment to excellence.</p>
+      </div>
+      <a href="gallery.html" class="btn btn-hero btn-hero-primary flex-shrink-0">View Full Gallery <span class="material-symbols-outlined" style="font-size:1.1rem">arrow_forward</span></a>
+    </div>
+    <div class="masonry" data-aos="fade-up" data-aos-delay="100">
+      <div class="masonry-item video-item" onclick="openVideoLightbox('src/assets/vidoes/new.MOV')">
+        <video class="thumb" style="height:300px;object-fit:cover;width:100%;display:block;pointer-events:none" src="src/assets/vidoes/new.MOV" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <div class="masonry-item video-item" onclick="openVideoLightbox('src/assets/vidoes/IMG_1624.MP4')">
+        <video class="thumb" style="height:240px;object-fit:cover;width:100%;display:block;pointer-events:none" src="src/assets/vidoes/IMG_1624.MP4" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <div class="masonry-item video-item" onclick="openVideoLightbox('src/assets/vidoes/IMG_1625.MOV')">
+        <video class="thumb" style="height:270px;object-fit:cover;width:100%;display:block;pointer-events:none" src="src/assets/vidoes/IMG_1625.MOV" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <div class="masonry-item video-item" onclick="openVideoLightbox('src/assets/vidoes/IMG_1626.MOV')">
+        <video class="thumb" style="height:220px;object-fit:cover;width:100%;display:block;pointer-events:none" src="src/assets/vidoes/IMG_1626.MOV" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <div class="masonry-item video-item" onclick="openVideoLightbox('src/assets/vidoes/IMG_1627.MOV')">
+        <video class="thumb" style="height:250px;object-fit:cover;width:100%;display:block;pointer-events:none" src="src/assets/vidoes/IMG_1627.MOV" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <div class="masonry-item video-item" onclick="openVideoLightbox('src/assets/vidoes/IMG_1628.MOV')">
+        <video class="thumb" style="height:260px;object-fit:cover;width:100%;display:block;pointer-events:none" src="src/assets/vidoes/IMG_1628.MOV" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <div class="masonry-item video-item" onclick="openVideoLightbox('src/assets/vidoes/IMG_1629.MOV')">
+        <video class="thumb" style="height:240px;object-fit:cover;width:100%;display:block;pointer-events:none" src="src/assets/vidoes/IMG_1629.MOV" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <div class="masonry-item video-item" onclick="openVideoLightbox('src/assets/vidoes/new.MOV')">
+        <video class="thumb" style="height:270px;object-fit:cover;width:100%;display:block;pointer-events:none" src="src/assets/vidoes/new.MOV" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM CTA → kirste_104 -->
+<section class="py-section" style="background:var(--surface-low)">
+  <div class="container" data-aos="zoom-in">
+    <div style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);padding:2.5rem 2rem;border-radius:1.25rem;text-align:center;color:#fff">
+      <span class="material-symbols-outlined" style="font-size:3rem;display:block;margin-bottom:.75rem">photo_camera</span>
+      <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;margin-bottom:.5rem">Follow Our Work on Instagram</h3>
+      <p style="opacity:.9;margin-bottom:1.5rem">See daily before-and-after transformations, cleaning tips, and team moments.</p>
+      <a href="https://www.instagram.com/kirste_104" target="_blank" rel="noopener" class="btn" style="background:#fff;color:#833ab4;font-weight:700;border-radius:9999px;padding:.75rem 2rem;font-size:1rem">@kirste_104</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING PREVIEW → pricing.html -->
+<section class="py-section bg-white">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-heading">Simple, Transparent Pricing</h2>
+      <div class="divider"></div>
+      <p class="section-sub">No hidden fees. Honest pricing for professional results.</p>
+    </div>
+    <div class="row justify-content-center g-4 mb-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="pricing-card h-100 text-center">
+          <p class="text-uppercase fw-semibold mb-1" style="color:var(--on-surface-variant);font-size:.8rem;letter-spacing:.1em">Starter</p>
+          <div class="display-5 fw-bold mb-1" style="color:var(--primary);font-family:'Plus Jakarta Sans',sans-serif">$89</div>
+          <p class="text-muted mb-3">/ session</p>
+          <p class="text-muted small">Up to 2 bedrooms, kitchen, bathrooms, eco-friendly products.</p>
+          <a href="pricing.html" class="preview-link mt-2">See Details <span class="material-symbols-outlined" style="font-size:.9rem">arrow_forward</span></a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="pricing-card featured h-100 text-center position-relative">
+          <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill" style="background:rgba(255,255,255,.25);font-size:.75rem;padding:.4rem 1rem;font-weight:600">MOST POPULAR</span>
+          <p class="text-uppercase fw-semibold mb-1" style="color:rgba(255,255,255,.75);font-size:.8rem;letter-spacing:.1em;margin-top:1rem">Premium</p>
+          <div class="display-5 fw-bold mb-1" style="font-family:'Plus Jakarta Sans',sans-serif">$149</div>
+          <p class="mb-3" style="opacity:.75">/ session</p>
+          <p style="opacity:.9;font-size:.9rem">Up to 4 bedrooms, full deep clean, inside oven &amp; fridge, windows, satisfaction guarantee.</p>
+          <a href="pricing.html" class="btn mt-2" style="background:#fff;color:var(--primary);border-radius:9999px;font-weight:700;padding:.5rem 1.5rem">See Details</a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="pricing-card h-100 text-center">
+          <p class="text-uppercase fw-semibold mb-1" style="color:var(--on-surface-variant);font-size:.8rem;letter-spacing:.1em">Business</p>
+          <div class="display-5 fw-bold mb-1" style="color:var(--primary);font-family:'Plus Jakarta Sans',sans-serif">Custom</div>
+          <p class="text-muted mb-3">&nbsp;</p>
+          <p class="text-muted small">Office &amp; commercial. Recurring contracts, account manager, priority support.</p>
+          <a href="pricing.html" class="preview-link mt-2">See Details <span class="material-symbols-outlined" style="font-size:.9rem">arrow_forward</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" data-aos="fade-up">
+      <a href="pricing.html" class="btn btn-hero btn-hero-primary">View Full Pricing &amp; Comparison <span class="material-symbols-outlined" style="font-size:1.2rem">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS PREVIEW (stays on home — social proof) -->
+<section class="py-section" style="background:var(--surface-low)">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-heading">What Our Clients Say</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Real reviews from real customers who trust Kirste Cleaning.</p>
+    </div>
+    <div class="swiper testimonialSwiper" data-aos="fade-up" data-aos-delay="100">
+      <div class="swiper-wrapper pb-5">
+        <div class="swiper-slide"><div class="testimonial-card"><div class="stars mb-3">★★★★★</div><p class="mb-4">"Kirste is on another level. Professional, thorough, and my home smelled amazing. Will never use anyone else!"</p><div class="d-flex align-items-center gap-3"><img src="https://i.pravatar.cc/100?img=1" alt="Sarah M." class="avatar"/><div><strong>Sarah M.</strong><br/><small class="text-muted">Homeowner, New York</small></div></div></div></div>
+        <div class="swiper-slide"><div class="testimonial-card"><div class="stars mb-3">★★★★★</div><p class="mb-4">"Our Airbnb ratings went from 4.2 to 4.9 stars after switching to Kirste. Guests constantly compliment how clean everything is."</p><div class="d-flex align-items-center gap-3"><img src="https://i.pravatar.cc/100?img=8" alt="James T." class="avatar"/><div><strong>James T.</strong><br/><small class="text-muted">Airbnb Host, Miami</small></div></div></div></div>
+        <div class="swiper-slide"><div class="testimonial-card"><div class="stars mb-3">★★★★★</div><p class="mb-4">"Easy booking, cleaners arrived on time, apartment was spotless. They cleaned inside the oven without me asking!"</p><div class="d-flex align-items-center gap-3"><img src="https://i.pravatar.cc/100?img=5" alt="Emily R." class="avatar"/><div><strong>Emily R.</strong><br/><small class="text-muted">Apartment Owner, Chicago</small></div></div></div></div>
+        <div class="swiper-slide"><div class="testimonial-card"><div class="stars mb-3">★★★★★</div><p class="mb-4">"Office has never looked better. Signed a monthly contract and the team is consistent and always goes above and beyond."</p><div class="d-flex align-items-center gap-3"><img src="https://i.pravatar.cc/100?img=12" alt="Marcus L." class="avatar"/><div><strong>Marcus L.</strong><br/><small class="text-muted">Business Owner, Austin</small></div></div></div></div>
+        <div class="swiper-slide"><div class="testimonial-card"><div class="stars mb-3">★★★★★</div><p class="mb-4">"Post-renovation deep clean — the house looked brand new. They handled everything perfectly. Worth every penny."</p><div class="d-flex align-items-center gap-3"><img src="https://i.pravatar.cc/100?img=20" alt="Linda K." class="avatar"/><div><strong>Linda K.</strong><br/><small class="text-muted">Homeowner, Seattle</small></div></div></div></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER → booking.html -->
+<section class="cta-band py-section text-white text-center">
+  <div class="container position-relative" style="z-index:2" data-aos="zoom-in">
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2.75rem;margin-bottom:1rem">Ready for a Spotless Home?</h2>
+    <p style="font-size:1.2rem;opacity:.9;max-width:600px;margin:0 auto 2rem">Join 500+ satisfied homeowners. Get a free quote today — no commitment required.</p>
+    <a href="booking.html" class="btn btn-hero" style="background:#fff;color:var(--primary);font-weight:700;padding:1rem 2.75rem">Get My Free Quote <span class="material-symbols-outlined" style="font-size:1.25rem">arrow_forward</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="pt-5 pb-3">
+  <div class="container">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#004ac6"/><path d="M8 20c2-4 4-7 8-8 4-1 7 1 8 4" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="12" r="3" fill="#7bd0ff"/></svg><span class="brand">Kirste Cleaning</span></div>
+        <p style="font-size:.9rem;line-height:1.7">Premium, eco-friendly cleaning services delivered by vetted professionals across 150+ US cities.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="soc-icon" aria-label="Facebook"><span class="material-symbols-outlined" style="font-size:1.1rem">language</span></a>
+          <a href="https://www.instagram.com/kirste_104" target="_blank" rel="noopener" class="soc-icon" aria-label="Instagram"><span class="material-symbols-outlined" style="font-size:1.1rem">photo_camera</span></a>
+          <a href="#" class="soc-icon" aria-label="Twitter"><span class="material-symbols-outlined" style="font-size:1.1rem">alternate_email</span></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6 class="mb-3">Services</h6>
+        <ul class="list-unstyled d-flex flex-column gap-2" style="font-size:.875rem">
+          <li><a href="services.html">Residential</a></li>
+          <li><a href="services.html">Deep Cleaning</a></li>
+          <li><a href="services.html">Office Cleaning</a></li>
+          <li><a href="services.html">Airbnb &amp; Rental</a></li>
+          <li><a href="services.html">Move In / Out</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6 class="mb-3">Company</h6>
+        <ul class="list-unstyled d-flex flex-column gap-2" style="font-size:.875rem">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="booking.html">Book Now</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="mb-3">Stay Updated</h6>
+        <p style="font-size:.875rem">Get cleaning tips and exclusive deals.</p>
+        <form onsubmit="handleNewsletterSubmit(event)" class="d-flex gap-2 mt-3">
+          <input type="email" class="form-control" placeholder="Your email" required style="height:44px;border-radius:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;" />
+          <button type="submit" class="btn btn-book flex-shrink-0">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <hr class="foot-divider" />
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2" style="font-size:.8rem;opacity:.6">
+      <p class="mb-0">&copy; 2026 Kirste Cleaning. All rights reserved.</p>
+      <p class="mb-0">Privacy Policy &middot; Terms of Service</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lb-close" onclick="closeLightbox()" aria-label="Close"><span class="material-symbols-outlined" style="font-size:2.5rem">close</span></button>
+  <video id="lb-video" controls autoplay playsinline style="max-width:90vw;max-height:90vh;border-radius:.5rem;outline:none"></video>
+</div>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top"><span class="material-symbols-outlined" style="font-size:1.25rem">arrow_upward</span></button>
+<div class="toast-wrap"><div id="mainToast" class="toast align-items-center text-white bg-dark border-0" role="alert"><div class="d-flex"><div class="toast-body" id="toastMsg"></div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  AOS.init({ duration:700, once:true, offset:60 });
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+  });
+  // Counters
+  document.querySelectorAll('.counter').forEach(el => {
+    new IntersectionObserver(([e], obs) => {
+      if (!e.isIntersecting) return; obs.unobserve(el);
+      const target = +el.dataset.target, step = Math.ceil(target/125); let cur = 0;
+      const t = setInterval(() => { cur = Math.min(cur+step,target); el.textContent = cur.toLocaleString(); if(cur>=target) clearInterval(t); }, 16);
+    }, {threshold:.5}).observe(el);
+  });
+  // Before/After
+  const baWrap=document.getElementById('baWrap');
+  if(baWrap){
+    const baBefore=document.getElementById('baBefore'),baHandle=document.getElementById('baHandle'); let drag=false;
+    const upd=x=>{const r=baWrap.getBoundingClientRect(),p=Math.max(2,Math.min(98,((x-r.left)/r.width)*100)); baBefore.style.width=p+'%'; baHandle.style.left=p+'%';};
+    baHandle.addEventListener('mousedown',()=>drag=true);
+    baWrap.addEventListener('touchstart',e=>{drag=true;upd(e.touches[0].clientX);});
+    window.addEventListener('mousemove',e=>{if(drag)upd(e.clientX);});
+    window.addEventListener('touchmove',e=>{if(drag)upd(e.touches[0].clientX);});
+    window.addEventListener('mouseup',()=>drag=false);
+    window.addEventListener('touchend',()=>drag=false);
+  }
+  // Swiper
+  new Swiper('.testimonialSwiper',{slidesPerView:1,spaceBetween:24,pagination:{el:'.swiper-pagination',clickable:true},breakpoints:{640:{slidesPerView:2},1024:{slidesPerView:3}},autoplay:{delay:4500,disableOnInteraction:false},loop:true});
+  // Lightbox
+  function openVideoLightbox(src){const vid=document.getElementById('lb-video');vid.src=src;vid.load();vid.play();document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden';}
+  function closeLightbox(){const lb=document.getElementById('lightbox');const vid=document.getElementById('lb-video');lb.classList.remove('active');document.body.style.overflow='';vid.pause();vid.src='';}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+  // Toast
+  function showToast(msg){const el=document.getElementById('mainToast'),m=document.getElementById('toastMsg');if(el&&m){m.textContent=msg;new bootstrap.Toast(el,{delay:4000}).show();}}
+  function handleNewsletterSubmit(e){e.preventDefault();showToast('📧 Subscribed! Great deals are on the way.');e.target.reset();}
+</script>
+</body>
+</html>
