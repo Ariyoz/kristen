@@ -256,5 +256,89 @@ footer h6 { color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
 .section-subheading { font-size: 1.125rem; color: var(--on-surface-variant); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 .hero-deco-blur { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; z-index: 1; pointer-events: none; }
 
-@media (max-width: 768px) { .masonry { columns: 2; } .hero-title { font-size: 2.75rem; } .section-heading { font-size: 2rem; } .py-section { padding: 3.5rem 0; } }
-@media (max-width: 480px) { .masonry { columns: 1; } .hero-title { font-size: 2rem; } }
+@media (max-width: 768px) {
+  .masonry { columns: 2; }
+  .hero-title { font-size: 2.75rem; }
+  .section-heading { font-size: 2rem; }
+  .py-section { padding: 3.5rem 0; }
+  .btn-hero { padding: 0.85rem 1.75rem; font-size: 0.95rem; }
+  .pricing-card { padding: 2rem 1.25rem; }
+  .addon-pill { padding: 0.75rem 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  /* Core overflow fixes */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+
+  /* Ghost letter — too large on mobile */
+  .page-hero .ph-ghost-letter { font-size: 6rem; }
+
+  /* Decorative absolute boxes in about/story section — clip them */
+  .position-relative { overflow: visible; }
+  .col-lg-6 .position-absolute { display: none; }
+
+  /* Gallery */
+  .masonry { columns: 1; }
+
+  /* Typography */
+  .hero-title { font-size: 2rem; }
+  .section-heading { font-size: 1.7rem; }
+  .ph-title { font-size: clamp(1.8rem, 7vw, 2.5rem) !important; }
+
+  /* Sections padding */
+  .py-section { padding: 2.5rem 0; }
+
+  /* Buttons — prevent overflow on small screens */
+  .btn-hero { padding: 0.75rem 1.25rem; font-size: 0.9rem; gap: 0.3rem; }
+  .btn-submit { padding: 0.85rem 1.5rem; font-size: 0.9rem; }
+  .d-flex.flex-wrap.gap-3 { gap: 0.5rem !important; }
+
+  /* Stats section — prevent negative margin overflow */
+  section[style*="margin-top:-5rem"] { margin-top: -2rem !important; }
+
+  /* Service selector cards */
+  .service-selector-card { padding: 1rem 0.75rem; }
+
+  /* Success message buttons */
+  .success-message .d-flex { flex-direction: column; align-items: stretch; }
+
+  /* Contact / booking form full width buttons */
+  .btn-submit.flex-grow-1 { min-width: 0; width: 100%; }
+
+  /* Addon pills wrap properly */
+  .addon-pill { padding: 0.65rem 1rem; font-size: 0.85rem; }
+
+  /* Pricing cards */
+  .pricing-card { padding: 1.5rem 1rem; }
+  .price-amount { font-size: 2.25rem; }
+
+  /* Footer newsletter form stacks */
+  footer .d-flex.gap-2 { flex-direction: column; }
+  footer .d-flex.gap-2 input { width: 100%; }
+
+  /* Testimonial cards */
+  .testimonial-card { padding: 1.25rem; }
+
+  /* BA slider */
+  .ba-wrap { border-width: 2px; }
+
+  /* Stat cards */
+  .stat-card { padding: 1.25rem 0.75rem; }
+  .stat-num { font-size: 1.75rem; }
+
+  /* CTA band — large decorative circle */
+  .cta-band::before { display: none; }
+
+  /* Navbar brand text */
+  .navbar-brand span { font-size: 1rem; }
+
+  /* Page hero left padding on tiny screens */
+  .page-hero .ph-left { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+
+  /* ph-right margin that can bleed */
+  .page-hero .ph-right { margin-left: 0; }
+
+  /* Gallery video thumbs — fixed heights too tall on 1-col */
+  .masonry-item video.thumb,
+  .masonry-item .thumb { height: auto !important; min-height: 200px; max-height: 280px; }
+}
